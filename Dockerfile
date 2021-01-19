@@ -29,7 +29,7 @@ RUN swift build --enable-test-discovery -c release
 WORKDIR /staging
 
 # Copy main executable to staging area
-RUN cp "$(swift build --package-path /build -c release --show-bin-path)/Run" ./
+RUN cp "$(swift build --package-path /build -c release --show-bin-path)/Run Gateway" ./
 
 # Copy any resouces from the public directory and views directory if the directories exist
 # Ensure that by default, neither the directory nor any of its contents are writable.
@@ -61,5 +61,5 @@ USER vapor:vapor
 EXPOSE 8080
 
 # Start the Vapor service when the image is run, default to listening on 8080 in production environment
-ENTRYPOINT ["./Run"]
+ENTRYPOINT ["./Run Gateway"]
 CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
