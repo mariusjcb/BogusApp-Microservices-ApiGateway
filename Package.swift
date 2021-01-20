@@ -9,17 +9,12 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
-        .package(name: "danger-swift", url: "https://github.com/danger/swift.git", from: "1.0.0"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.10"),
-        .package(url: "https://github.com/Realm/SwiftLint", from: "0.42.0"),
-        .package(url: "https://github.com/orta/Komondor", from: "1.0.6"),
     ],
     targets: [
         .target(
             name: "Gateway",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
-                .product(name: "Danger", package: "danger-swift")
             ],
             path: "Sources/App",
             swiftSettings: [
@@ -40,21 +35,3 @@ let package = Package(
         )
     ]
 )
-
-#if canImport(PackageConfig)
-    import PackageConfig
-
-    let config = PackageConfiguration([
-        "komondor": [
-            "pre-commit": [
-                "echo 'Running tests...'",
-                "swift test",
-                "echo 'Running SwiftFormat...'",
-                "swift run swiftformat .",
-                "echo 'Running SwiftLint...'",
-                "swift run swiftlint autocorrect --path Sources/",
-                "git add .",
-            ],
-        ],
-    ]).write()
-#endif

@@ -51,6 +51,11 @@ RUN useradd --user-group --create-home --system --skel /dev/null --home-dir /app
 # Switch to the new home directory
 WORKDIR /app
 
+ENV BENEFITS_HOST=http://127.0.0.1:8081
+ENV CHANNELS_HOST=http://127.0.0.1:8082
+ENV FEES_HOST=http://127.0.0.1:8083
+ENV TARGETS_HOST=http://127.0.0.1:8084
+
 # Copy built executable and any staged resources from builder
 COPY --from=build --chown=vapor:vapor /staging /app
 
