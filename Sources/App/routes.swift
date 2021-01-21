@@ -3,7 +3,6 @@ import Vapor
 enum Microservices: String, CaseIterable {
     case benefits
     case channels
-    case fees
     case targets
 }
 
