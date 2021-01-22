@@ -19,7 +19,7 @@ x-shared_environment: &shared_environment
 
 services:
   app:
-    image: BogusApp-Microservices-ApiGateway:latest
+    image: bogusapp-microservices-apigateway:latest
     build:
       context: .
     env_file:
